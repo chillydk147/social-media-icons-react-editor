@@ -82,10 +82,185 @@ const styles = theme => ({
 });
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onUpdateBorderColor = this.onUpdateBorderColor.bind(this);
+    this.onUpdateBorderStyle = this.onUpdateBorderStyle.bind(this);
+    this.onUpdateBorderWidth = this.onUpdateBorderWidth.bind(this);
+    this.onUpdateColor = this.onUpdateColor.bind(this);
+    this.onUpdateIcon = this.onUpdateIcon.bind(this);
+    this.onUpdateIconColor = this.onUpdateIconColor.bind(this);
+    this.onUpdateIconSize = this.onUpdateIconSize.bind(this);
+    this.onUpdateRoundness = this.onUpdateRoundness.bind(this);
+    this.onUpdateSize = this.onUpdateSize.bind(this);
+    this.onUpdateUrl = this.onUpdateUrl.bind(this);
+    this.updateSvg = this.updateSvg.bind(this);
+    this.state = {
+      borderColor: "rgba(0,0,0,0.25)",
+      borderStyle: "solid",
+      borderWidth: 5,
+      color: "rgba(28,186,223,1)",
+      icon: "twitter",
+      iconColor: "rgba(255,255,255,1)",
+      iconSize: 5,      
+      roundness: 20,
+      size:100,
+      svgCode: "<b>abc</b>",
+      url: "https://some-website.com/my-social-media-url",
+    };
+  }
+  animate(){
+    let self = this;
+    let icons = ["twitter","facebook","googleplus","instagram","vk","ok","linkedin","aboutme","slideshare","ello","vimeo","youtube","youtube-play","coub","medium","wordpress","tumblr","livejournal","pocket","rss","skype","phone","mail","send","send-light","map","yelp","foursquare","swarm","tripadvisor","pinterest","pinterest-light","behance","dribbble","etsy","etsy-short","flikr","500px","vscogrid","photobucket","quora","stackoverflow","github","codepen","jsfiddle","producthunt","kickstarter","reddit","reddit-light","stumbleupon","delicious","digg","deviantart","slack","messenger","snapchat","line-icon","line","angellist","xing","viadeo","upwork","envato","periscope","bookmate","shopify","favorite","apple","android","googleplay","windows","amazon","dropbox","googledrive","evernote","sketch","web"];
+    let index = icons.length-1;
+    let max = 200;
+    let colors = [max,0,0];
+    let colorIndexCount = 0;
+    let colorIndex = 1;
+    let cutOffs = [28,186,223];
+    let directions = [0,1,1];
+    let roundness = 50;
+    
+
+    let t2 = setInterval(function(){
+      let v = colors[colorIndex];
+      let next = false;
+      if(directions[colorIndex]===1){
+        v++;
+        if(v>=cutOffs[colorIndex]){
+          next = true;
+        }        
+      }
+      else{
+        v--;
+        if(v<=cutOffs[colorIndex]){
+          next = true;
+        } 
+      }
+      colors[colorIndex] = v;
+
+      let red = colors[0];
+      let green = colors[1];
+      let blue = colors[2];
+
+      let color = "rgba("+red+","+green+","+blue+",1)"
+      self.setState({
+        color: color
+      });
+
+      if(next===true){
+        colorIndexCount++;
+        if(colorIndexCount>2){
+          clearInterval(t2);
+        }
+        colorIndex--;
+        if(colorIndex<0){
+          colorIndex = 2;
+        }
+      }      
+    },103);
+
+    let t1 = setInterval(function(){
+      self.setState({
+        icon: icons[index]
+      });
+      index--;
+      
+      if(index===-1){
+        clearInterval(t1);
+      }
+    },780);
+
+    let t3 = setInterval(function(){
+      self.setState({
+        roundness: roundness
+      });
+      roundness--;
+      
+      if(roundness===19){
+        clearInterval(t3);
+      }
+    },2000);
+  }
+  componentDidMount(){
+    //this.updateSvg();
+  }
+  onUpdateBorderColor(colorCode) {
+    this.setState({
+      borderColor: colorCode
+    });
+    this.updateSvg();
+  }
+  onUpdateBorderWidth(value) {
+    this.setState({
+      borderWidth: value
+    });
+    this.updateSvg();
+  }
+  onUpdateBorderStyle(obj) {
+    this.setState({
+      borderStyle: obj.target.value
+    });
+    this.updateSvg();
+  }
+  onUpdateColor(colorCode) {
+    this.setState({
+      color: colorCode
+    });
+    this.updateSvg();
+  }
+  onUpdateIcon(obj) {
+    this.setState({
+      icon: obj.target.value
+    });
+
+    var self = this;
+    setTimeout(() => {
+      self.setState({
+        svgCode: self.refs.codeReact.innerHTML
+      });
+    }, 100);
+  }
+  onUpdateIconColor(colorCode) {
+    this.setState({
+      iconColor: colorCode
+    });
+    this.updateSvg();
+  }
+  onUpdateIconSize(value) {
+    this.setState({
+      iconSize: value
+    });
+    this.updateSvg();
+  }
+  onUpdateRoundness(value) {
+    this.setState({
+      roundness: value
+    });
+    this.updateSvg();
+  }
+  onUpdateSize(value) {
+    this.setState({
+      size: value
+    });
+    this.updateSvg();
+  }
+  onUpdateUrl(obj) {
+    this.setState({
+      url: obj.target.value
+    });
+    this.updateSvg();
+  }
+  updateSvg(){
+    var obj = this.refs.codeReact;
+    this.setState({
+      svgCode: obj.innerHTML
+    });
+  }
   render(){   
     return (
       <div>        
-        abcd
+        abcde
         <FormControl>
                     <Select
                       className="controlSelect"
