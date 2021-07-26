@@ -1,8 +1,85 @@
 import React from 'react';
 
+import { withStyles } from '@material-ui/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+
+const styles = theme => ({
+  app: {
+    backgroundColor:"#000",
+    padding: "20px;"
+  },
+  codeDiv:{
+    border:"1px solid rgba(0, 0, 0, 0.23)",
+    padding: "20px",
+    color: "#FFF"
+  },
+  codeWrapper:{
+    padding: "50px"    
+  },
+  control:{
+    marginBottom:"10px"
+  },
+  controlLabel:{
+    color:"#FFF",
+    display:"block",
+    marginBottom:"5px"
+  },
+  controlSection:{
+    padding:"10px",
+    border:"1px solid rgba(0, 0, 0, 0.23)",
+    marginBottom:"5px"
+  },
+  controlSelect:{
+    color:"#FFF"
+  },  
+  description:{
+    color:"#FF0"
+  },
+  header:{
+    color: "#fff"
+  },
+  heading:{
+    color: "#40A9F3"
+  },
+  iconWrapper:{
+    textAlign: "center",
+    display: "table",
+    height: "300px"
+  },
+  icon: {
+    display: "table-cell",
+    verticalAlign: "middle"
+  },
+  link:{
+    color: "#40A9F3"
+  },
+  mainPanel:{
+    width: "99%"    
+  },
+  panel:{
+    marginBottom: "10px",
+    border:"3px solid rgba(0, 0, 0, 0.23)",
+  },
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: "10px",
+    backgroundColor: "#474540",
+  },
+  textField:{
+    '& input[type=text]':{
+      color: "#fff"
+    }    
+  },
+  title: {
+    color:"#40A9F3",
+    display:"block",
+    marginBottom:"10px"
+  }
+});
 
 class App extends React.Component {
   render(){   
@@ -98,4 +175,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
