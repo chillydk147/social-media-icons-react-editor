@@ -310,7 +310,7 @@ class App extends React.Component {
                     React Code
                   </Typography>
                   <Typography variant="subtitle1" gutterBottom className={classes.description}>
-                    Copy this code to use in your React JS Application, you can access the React JS NPM Package <a href="http://www.myurl.com" className={classes.link} target="_blank" rel="noreferrer">here</a>
+                    Copy this code to use in your React JS Application, you can access the React JS NPM Package <a href="https://www.npmjs.com/package/social-media-icons-react" className={classes.link} target="_blank" rel="noreferrer">here</a>
                   </Typography>
                   <div className={classes.codeDiv}>
                     <CodeReact
