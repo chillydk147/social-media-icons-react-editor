@@ -10,10 +10,9 @@
     "@testing-library/user-event": "^13.2.1",
     "react-color": "*",
     "react-dom": "*",
-    "react-load-script": "0.0.6",
     "react-scripts": "*",
     "reactcss": "*",
-    "social-media-icons-react": "^1.1.6",
+    "social-media-icons-react": "^1.1.7",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
