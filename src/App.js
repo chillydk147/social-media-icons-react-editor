@@ -107,7 +107,7 @@ class App extends React.Component {
       borderColor: "rgba(0,0,0,0.25)",
       borderStyle: "solid",
       borderWidth: 5,
-      color: "rgba(28,186,223,1)",
+      color: "rgba(26,166,233,1)",
       icon: "twitter",
       iconColor: "rgba(255,255,255,1)",
       iconSize: 5,      
