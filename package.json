@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.12.2",
-    "@material-ui/lab": "^4.0.0-alpha.60",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "@material-ui/core": "*",
+    "@material-ui/lab": "*",
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "react-color": "*",
+    "react-dom": "*",
+    "react-scripts": "*",
+    "reactcss": "*",
+    "social-media-icons-react": "^1.1.5",
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +38,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "react": "*",
+    "react-svg": "*",
+    "typescript": "*"
   }
 }

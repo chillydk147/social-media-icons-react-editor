@@ -1,8 +1,16 @@
 import React from 'react';
-
+import {SocialMediaIconsReact} from 'social-media-icons-react';
+import CodeReact from './CodeReact';
+import SliderControl from "./slider-control";
+import ColorPicker from "./color-picker-control";
 import { withStyles } from '@material-ui/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 
 const styles = theme => ({
@@ -183,7 +191,7 @@ class App extends React.Component {
     },2000);
   }
   componentDidMount(){
-    //this.updateSvg();
+    this.updateSvg();
   }
   onUpdateBorderColor(colorCode) {
     this.setState({
@@ -258,12 +266,120 @@ class App extends React.Component {
     });
   }
   render(){   
+    const { classes } = this.props;
     return (
-      <div>        
-        abcde
-        <FormControl>
+      <div className={classes.app}>        
+        <Grid 
+          container
+          className={classes.root}
+          spacing={3}
+          direction="row"
+          justify="center"
+          alignItems="stretch"
+        >
+            <Grid item xs={12}>
+              <div className={classes.header}>
+              <Typography variant="h3" gutterBottom>
+                Social Media Icons Editor
+              </Typography>
+              <Typography variant="subtitle1" gutterBottom className={classes.description}>
+                    Create your own Social Media Icons to use in your React JS Application or anywhere else, your imagination is the only limitation :)
+              </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <Paper className={classes.paper +" "+ classes.iconWrapper +" "+ classes.mainPanel +" "+ classes.panel}>
+                <div className={classes.icon} ref="codeReact">
+                  <SocialMediaIconsReact 
+                    borderColor={this.state.borderColor}
+                    borderWidth={this.state.borderWidth}
+                    borderStyle={this.state.borderStyle}          
+                    icon={this.state.icon}
+                    iconColor={this.state.iconColor}
+                    backgroundColor={this.state.color}
+                    iconSize={this.state.iconSize}
+                    roundness={this.state.roundness+'%'}
+                    size={this.state.size}
+                    url={this.state.url}
+                  />    
+                </div>                  
+              </Paper>
+              <Paper className={classes.paper +" "+ classes.codeWrapper +" "+ classes.mainPanel +" "+ classes.panel}> 
+                <div className={classes.icon}>
+                  <Typography variant="h4" gutterBottom className={classes.heading}>
+                    React Code
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom className={classes.description}>
+                    Copy this code to use in your React JS Application, you can access the React JS NPM Package <a href="#" className={classes.link} target="_blank">here</a>
+                  </Typography>
+                  <div className={classes.codeDiv}>
+                    <CodeReact
+                      borderColor={this.state.borderColor}
+                      borderWidth={this.state.borderWidth}
+                      borderStyle={this.state.borderStyle}          
+                      icon={this.state.icon}
+                      iconColor={this.state.iconColor}
+                      backgroundColor={this.state.color}
+                      iconSize={this.state.iconSize}
+                      roundness={this.state.roundness+'%'}
+                      size={this.state.size}
+                      url={this.state.url}
+                    />
+                  </div>                  
+                </div>                 
+              </Paper>
+              <Paper className={classes.paper +" "+ classes.codeWrapper +" "+ classes.mainPanel +" "+ classes.panel}> 
+                <div className={classes.icon}>
+                  <Typography variant="h4" gutterBottom className={classes.heading}>
+                    SVG Code
+                  </Typography>
+                  <Typography variant="subtitle1" gutterBottom className={classes.description}>
+                    Copy this code to use with your HTML
+                  </Typography>
+                  <div className={classes.codeDiv}>
+                    {this.state.svgCode}
+                  </div>                  
+                </div>                 
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <Paper className={classes.paper +" "+ classes.panel}>          
+                <div className={classes.controlSection}>
+                  <b className={classes.title}>Background</b>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Roundness</span>
+                    <SliderControl
+                      value={this.state.roundness}
+                      min="0"
+                      max="50"
+                      onUpdate={this.onUpdateRoundness}
+                    />
+                  </div>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Size (px)</span>
+                    <SliderControl
+                      value={this.state.size}
+                      min="10"
+                      max="100"
+                      onUpdate={this.onUpdateSize}
+                    />
+                  </div>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Color</span>
+                    <ColorPicker onChangeComplete={this.onUpdateColor} color={this.state.color} />
+                  </div>                  
+                </div>
+
+                <div className={classes.controlSection}>
+                  <b className={classes.title}>Icon</b>
+                  <div className={classes.control}>
+                  <span className={classes.controlLabel}>Icon</span>
+                  <FormControl>
                     <Select
-                      className="controlSelect"
+                      value={this.state.icon}
+                      onChange={this.onUpdateIcon}
+                      input={<OutlinedInput name="iconSelect" />}
+                      className={classes.controlSelect}
                     >
                       <MenuItem value="twitter">twitter</MenuItem>
                       <MenuItem value="facebook">facebook</MenuItem>                      
@@ -345,6 +461,73 @@ class App extends React.Component {
 
                     </Select>
                   </FormControl>
+                  </div>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Link Url</span>
+                    <TextField
+                      id="outlined-with-placeholder"
+                      className={classes.textField}
+                      margin="normal"
+                      variant="outlined"
+                      fullWidth="true"
+                      value={this.state.url}
+                      onChange={this.onUpdateUrl}
+                    />
+                  </div>                 
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Size (px)</span>
+                    <SliderControl
+                      value={this.state.iconSize}
+                      min="0"
+                      max="10"
+                      onUpdate={this.onUpdateIconSize}
+                    />
+                  </div>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Color</span>
+                    <ColorPicker onChangeComplete={this.onUpdateIconColor} color={this.state.iconColor} />
+                  </div>                  
+                </div>
+
+                <div className={classes.controlSection}>
+                  <b className={classes.title}>Border</b>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Style</span>     
+                    <FormControl>
+                      <Select
+                        value={this.state.borderStyle}
+                        onChange={this.onUpdateBorderStyle}
+                        input={<OutlinedInput name="borderStyleSelect" />}
+                        className={classes.controlSelect}
+                      >
+                        <MenuItem value="solid">Solid</MenuItem>
+                        <MenuItem value="dotted">Dotted</MenuItem>
+                        <MenuItem value="dashed">Dashed</MenuItem>
+                        <MenuItem value="double">Double</MenuItem>
+                        <MenuItem value="groove">Groove</MenuItem>
+                        <MenuItem value="ridge">Ridge</MenuItem>
+                        <MenuItem value="inset">Inset</MenuItem>
+                        <MenuItem value="outset">Outset</MenuItem>
+                      </Select>
+                    </FormControl>             
+                  </div>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Width (px)</span>                    
+                    <SliderControl
+                      value={this.state.borderWidth}
+                      min="0"
+                      max="5"
+                      onUpdate={this.onUpdateBorderWidth}
+                    />
+                  </div>
+                  <div className={classes.control}>
+                    <span className={classes.controlLabel}>Color</span>                    
+                    <ColorPicker onChangeComplete={this.onUpdateBorderColor} color={this.state.borderColor} />
+                  </div>                  
+                </div>                
+              </Paper>
+            </Grid>
+          </Grid>     
       </div>
     );
   }
