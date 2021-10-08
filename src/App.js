@@ -120,7 +120,7 @@ class App extends React.Component {
   }
   animate(){
     let self = this;
-    let icons = ["twitter","facebook","googleplus","instagram","vk","ok","linkedin","aboutme","slideshare","ello","vimeo","youtube","youtube-play","coub","medium","wordpress","tumblr","livejournal","pocket","rss","skype","phone","mail","send","send-light","map","yelp","foursquare","swarm","tripadvisor","pinterest","pinterest-light","behance","dribbble","etsy","etsy-short","flikr","500px","vscogrid","photobucket","quora","stackoverflow","github","codepen","jsfiddle","producthunt","kickstarter","reddit","reddit-light","stumbleupon","delicious","digg","deviantart","slack","messenger","snapchat","line-icon","line","angellist","xing","viadeo","upwork","envato","periscope","bookmate","shopify","favorite","apple","android","googleplay","windows","amazon","dropbox","googledrive","evernote","sketch","web"];
+    let icons = ["twitter","facebook","googleplus","instagram","whatsapp","vk","ok","linkedin","aboutme","slideshare","ello","vimeo","youtube","youtube-play","coub","medium","wordpress","tumblr","livejournal","pocket","rss","skype","phone","mail","send","send-light","map","yelp","foursquare","swarm","tripadvisor","pinterest","pinterest-light","behance","dribbble","etsy","etsy-short","flikr","500px","vscogrid","photobucket","quora","stackoverflow","github","codepen","jsfiddle","producthunt","kickstarter","reddit","reddit-light","stumbleupon","delicious","digg","deviantart","slack","messenger","snapchat","line-icon","line","angellist","xing","viadeo","upwork","envato","periscope","bookmate","shopify","favorite","apple","android","googleplay","windows","amazon","dropbox","googledrive","evernote","sketch","web"];
     let index = icons.length-1;
     let max = 200;
     let colors = [max,0,0];
@@ -386,6 +386,7 @@ class App extends React.Component {
                       <MenuItem value="facebook">facebook</MenuItem>                      
                       <MenuItem value="googleplus">googleplus</MenuItem>
                       <MenuItem value="instagram">instagram</MenuItem>
+                      <MenuItem value="whatsapp">whatsapp</MenuItem>
                       <MenuItem value="vk">vk</MenuItem>
                       <MenuItem value="ok">ok</MenuItem>
                       <MenuItem value="linkedin">linkedin</MenuItem>
